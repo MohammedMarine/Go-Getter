@@ -83,7 +83,7 @@ export default function Register({
       if (res.data === "Compte correctement créé !") {
         setSubmitted(true);
         setMessage(
-          "Merci de votre inscription, connectez vous dès à présent pour effectuer votre première demande !"
+          "Inscription réalisée avec succès !"
         );
         setFirstname("");
         setLastname("");
@@ -109,17 +109,15 @@ export default function Register({
     }
   };
 
-  return loading ? (
-    <InfinityLoading />
-  ) : (
+  return (
     <>
-      <div className="messages m-10">
-        <SuccessMessage submitted={submitted} message={message} />
-        <ErrorMessage error={error} message={message} />
-        <ServerErrorMessage serverError={serverError} message={message} />
+      <div className="messages m-2">
+        {loading ? ( <InfinityLoading/> ) : (
+        <><SuccessMessage submitted={submitted} message={message} /><ErrorMessage error={error} message={message} /><ServerErrorMessage serverError={serverError} message={message} /></>
+        )}
       </div>
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-        <div className="card-body">
+        <div className="card-body p-0">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Prénom</span>

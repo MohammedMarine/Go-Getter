@@ -31,7 +31,7 @@ const Login = ({ error, setError, message, setMessage }) => {
     e.preventDefault();
     if (email === "" || password === ""){
         setError(true);
-        setMessage("champs")
+        setMessage("Merci de compléter tous les champs !")
     } else {
      dispatch(login());
      setError(loginFailed)
@@ -47,11 +47,11 @@ const Login = ({ error, setError, message, setMessage }) => {
     <>
       {!isLogged && (
         <>
-          <div className="messages m-10">
+          <div className="messages m-2">
             <ErrorMessage error={error} message={message} />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+            <div className="card-body p-0">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
