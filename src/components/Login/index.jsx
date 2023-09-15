@@ -16,7 +16,7 @@ const Login = ({ error, setError, message, setMessage }) => {
   useEffect(() => {
     setError(false)
     if (isLogged && role === "user") {
-      navigateTo("/products-list");
+      navigateTo("/products-of-the-week");
     }
     if (isLogged && role === "admin") {
       navigateTo("/asso-view/add-product");

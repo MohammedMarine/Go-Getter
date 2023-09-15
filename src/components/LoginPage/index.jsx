@@ -2,13 +2,12 @@ import { useState } from "react";
 import Login from "../Login";
 import Register from "../Register";
 import Logo from "../../assets/img/Logo_GoGetter.png";
+import PropTypes from "prop-types";
 
-const LoginPage = () => {
+const LoginPage = ({ error, setError, message, setMessage }) => {
   const [isActive, setIsActive] = useState(true);
-const [submitted, setSubmitted] = useState(false);
-const [error, setError] = useState(false);
-const [serverError, setServerError] = useState(false);
-const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState(false);
 
   const handleClick = (isActive) => {
     setIsActive(isActive);
@@ -73,3 +72,10 @@ const [message, setMessage] = useState("");
 };
 
 export default LoginPage;
+
+LoginPage.propTypes = {
+  error: PropTypes.bool,
+  setError: PropTypes.func,
+  message: PropTypes.string,
+  setMessage: PropTypes.func,
+};
