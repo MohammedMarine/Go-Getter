@@ -5,7 +5,7 @@ import LoginPage from "./components/LoginPage";
 import ProductsOfTheWeek from "./components/ProductsOfTheWeek";
 
 import "./App.css";
-import Header from "./components/Header";
+//import Header from "./components/Header";
 
 function App() {
   const [error, setError] = useState(false);
@@ -28,7 +28,6 @@ function App() {
           path="/products-of-the-week/*"
           element={
             <ProtectedRoute roles={["user"]}>
-              <Header />
               <ProductsOfTheWeek
                 error={error}
                 setError={setError}

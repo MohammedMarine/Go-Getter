@@ -4,15 +4,20 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import InfinityLoading from "../Loading/InfinityLoading";
 import ErrorMessage from "../Message/ErrorMessage";
+import Process from "../Process";
 import PropTypes from "prop-types";
+import Header from "../Header";
 
-
-export default function ProductsOfTheWeek({error, setError, message, setMessage}) {
+export default function ProductsOfTheWeek({
+  error,
+  setError,
+  message,
+  setMessage,
+}) {
   const user = useSelector((state) => state.user);
   const [loading, setLoading] = useState(false);
   const [productsList, setProductsList] = useState([]);
   const [cart, setCart] = useState([Number]);
-
 
   // function to add the products selected to the getter's cart
   const handleList = (event) => {
@@ -78,9 +83,10 @@ export default function ProductsOfTheWeek({error, setError, message, setMessage}
         setError(false);
         setProductsList(res.data);
       } catch (error) {
-        console.log(error);
-        //setError(true);
-        setMessage(error.message);
+        setError(true);
+        setMessage(
+          "Un problème est survenu, merci de réessayer ultérieurement."
+        );
         setLoading(false);
       }
     };
@@ -88,49 +94,113 @@ export default function ProductsOfTheWeek({error, setError, message, setMessage}
     fetchProducts();
   }, [setError, setMessage, user]);
 
-
-  return loading ? (
-    <InfinityLoading />
-  ) : (
-    <div>
-      <ErrorMessage error={error} message={message} />
-      <>
-        <div className="">
-          <div className="overflow-x-auto max-h-[45rem]">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Produits de la semaine</th>
-                </tr>
-              </thead>
-              <tbody>
-                {productsList.map((product) => (
-                  <tr key={product.id}>
-                    <th>
-                      <label>
-                        <input
-                          type="checkbox"
-                          className="checkbox"
-                          value={product.id}
-                          onChange={handleList}
-                        />
-                      </label>
-                    </th>
-                    <td>{product.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+  return (
+    <>
+      <Header />
+      <div className="hero min-h-[89vh] bg-base-200">
+        <div className="hero-content flex-col lg:flex-row md:mr-0 xl:mr-[15rem]">
+          <div className="text-center lg:text-left">
+            <Process />
           </div>
-          <button
-            onClick={() => handleSubmit()}
-            className="btn btn-outline btn-accent m-10"
-          >
-            Valider
-          </button>
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <div className="card-body h-[30rem]">
+              {loading ? (
+                <div className="m-auto">
+                  <InfinityLoading />
+                </div>
+              ) : (
+                <>
+                  {error && <ErrorMessage error={error} message={message} />}
+                  <>
+                    <div className="overflow-auto ">
+                      <table className="table">
+                        <tbody>
+                          {productsList.map((product) => (
+                            <tr key={product.id}>
+                              <th className="pr-0">
+                                <label>
+                                  <input
+                                    type="checkbox"
+                                    className="checkbox bg-gray-300"
+                                    value={product.id}
+                                    onChange={handleList}
+                                  />
+                                </label>
+                              </th>
+                              <td className="pl-0">{product.name}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {!error && (
+                      <button
+                        onClick={() => handleSubmit()}
+                        className="btn btn-outline btn-accent m-10"
+                      >
+                        Valider
+                      </button>
+                    )}
+                  </>
+                </>
+              )}
+            </div>
+          </div>
         </div>
-      </>
-    </div>
+      </div>
+    </>
+    // <>
+    //   <div className="flex flex-col lg:flex-row ">
+    //     <section className="basis-1/2 ">
+    //       <Process />
+    //     </section>
+    //     <section className="basis-1/2 ">
+    //       {loading ? (
+    //         <InfinityLoading />
+    //       ) : (
+    //         <div>
+    //           <div className="m-12">
+    //             <ErrorMessage error={error} message={message} />
+    //           </div>
+    //           <>
+    //             <div className="max-h-[16rem] w-96 m-auto">
+    //               <div className="overflow-auto max-h-[40rem] w-96 bg-yellow-100">
+    //                 <table className="table">
+    //                   <tbody>
+    //                     {productsList.map((product) => (
+    //                       <tr key={product.id}>
+    //                         <th className="pr-0">
+    //                           <label>
+    //                             <input
+    //                               type="checkbox"
+    //                               className="checkbox bg-gray-300"
+    //                               value={product.id}
+    //                               onChange={handleList}
+    //                             />
+    //                           </label>
+    //                         </th>
+    //                         <td className="pl-0">{product.name}</td>
+    //                       </tr>
+    //                     ))}
+    //                   </tbody>
+    //                 </table>
+    //               </div>
+    //               {!error && (
+    //                 <button
+    //                   onClick={() => handleSubmit()}
+    //                   className="btn btn-outline btn-accent m-10"
+    //                 >
+    //                   Valider
+    //                 </button>
+    //               )}
+    //             </div>
+    //           </>
+    //         </div>
+    //       )}
+    //     </section>
+    //   </div>
+    // </>
   );
 }
 
