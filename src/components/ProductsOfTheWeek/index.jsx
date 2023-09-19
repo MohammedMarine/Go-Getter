@@ -57,12 +57,15 @@ export default function ProductsOfTheWeek({
       const res = await axiosInstance.post("/carts", {
         productIds: cart,
       });
+      setLoading(false)
       if (res.data.status_id === 1) {
         navigate("/my-cart");
+        setLoading(true);
       }
       console.log(res);
     } catch (error) {
       console.log(error);
+      setLoading(false);
       setError(true);
       setMessage(error.message);
     }
