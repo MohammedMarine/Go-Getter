@@ -150,57 +150,6 @@ export default function ProductsOfTheWeek({
         </div>
       </div>
     </>
-    // <>
-    //   <div className="flex flex-col lg:flex-row ">
-    //     <section className="basis-1/2 ">
-    //       <Process />
-    //     </section>
-    //     <section className="basis-1/2 ">
-    //       {loading ? (
-    //         <InfinityLoading />
-    //       ) : (
-    //         <div>
-    //           <div className="m-12">
-    //             <ErrorMessage error={error} message={message} />
-    //           </div>
-    //           <>
-    //             <div className="max-h-[16rem] w-96 m-auto">
-    //               <div className="overflow-auto max-h-[40rem] w-96 bg-yellow-100">
-    //                 <table className="table">
-    //                   <tbody>
-    //                     {productsList.map((product) => (
-    //                       <tr key={product.id}>
-    //                         <th className="pr-0">
-    //                           <label>
-    //                             <input
-    //                               type="checkbox"
-    //                               className="checkbox bg-gray-300"
-    //                               value={product.id}
-    //                               onChange={handleList}
-    //                             />
-    //                           </label>
-    //                         </th>
-    //                         <td className="pl-0">{product.name}</td>
-    //                       </tr>
-    //                     ))}
-    //                   </tbody>
-    //                 </table>
-    //               </div>
-    //               {!error && (
-    //                 <button
-    //                   onClick={() => handleSubmit()}
-    //                   className="btn btn-outline btn-accent m-10"
-    //                 >
-    //                   Valider
-    //                 </button>
-    //               )}
-    //             </div>
-    //           </>
-    //         </div>
-    //       )}
-    //     </section>
-    //   </div>
-    // </>
   );
 }
 
