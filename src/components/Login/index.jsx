@@ -19,7 +19,7 @@ const Login = ({ error, setError, message, setMessage }) => {
       navigateTo("/products-of-the-week");
     }
     if (isLogged && role === "admin") {
-      navigateTo("/asso-view/add-product");
+      navigateTo("/admin/add-product");
     }
   }, [isLogged, navigateTo, role, setError]);
 
@@ -98,8 +98,6 @@ export default Login;
 Login.propTypes = {
   error: PropTypes.bool,
   setError: PropTypes.func,
-  serverError: PropTypes.bool,
-  setServerError: PropTypes.func,
   message: PropTypes.string,
   setMessage: PropTypes.func,
 };

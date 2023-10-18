@@ -13,8 +13,10 @@ export default function Status() {
       try {
         const res = await axiosInstance.get('/currentCart');
         console.log(res.data[0].status_id);
+        console.log(res.data);
         if (res.data[0].status_id) {
           setStatus(res.data[0].status_id);
+          console.log(`le statut: ${res.data[0].status_id}`);
           setLoading(false);
         }
         console.log(res.data[0].status_id);
@@ -38,7 +40,7 @@ export default function Status() {
   ) : status === 2 ? (
     <ul className="steps">
       <li className="step step-primary">En cours de préparation</li>
-      <li className="step step-primaryy">Prêt à être récupéré</li>
+      <li className="step step-primary">Prêt à être récupéré</li>
       <li className="step">Récupéré</li>
     </ul>
   ) : status === 4 ? (

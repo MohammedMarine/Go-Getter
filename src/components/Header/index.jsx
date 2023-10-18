@@ -3,6 +3,7 @@ import { logout } from "../../store/actions/userActions";
 import logo_header from "../../assets/img/logo_header.png";
 import { useSelector } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const dispatch = useDispatch();
@@ -40,10 +41,10 @@ function Header() {
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Gérer la liste de Produits</a>
+                  <NavLink to="add-product">Gérer la liste de Produits</NavLink>
                 </li>
                 <li>
-                  <a>Panier à préparer</a>
+                  <NavLink to="dispatch">Panier à préparer</NavLink>
                 </li>
                 <li>
                   <a>Valider un Pick Up</a>
