@@ -5,7 +5,7 @@ import InfinityLoading from "../Loading/InfinityLoading";
 import PropTypes from "prop-types";
 import ErrorMessage from "../Message/ErrorMessage";
 
-export default function GetCarts({
+export default function Dispatch({
   setSelectedCart,
   setCartId,
   error,
@@ -53,9 +53,9 @@ export default function GetCarts({
               <>
                 {error && <ErrorMessage error={error} message={message} />}
                 <>
-                  <caption className="sticky top-0 caption-top py-6 bg-eggshell ">
+                  <h2 className="sticky top-0 caption-top py-6 bg-eggshell ">
                     Panier à préparer
-                  </caption>
+                  </h2>
                   <div className="overflow-auto w-[21rem] m-auto">
                     <table className="table-md md:table-lg ">
                       <tbody>
@@ -102,11 +102,11 @@ export default function GetCarts({
   );
 }
 
-GetCarts.propTypes = {
+Dispatch.propTypes = {
   setSelectedCart: PropTypes.func,
   setCartId: PropTypes.func,
   error: PropTypes.bool,
   setError: PropTypes.func,
   message: PropTypes.string,
-  setMessage: PropTypes.func,
+  setMessage: PropTypes.func
 };

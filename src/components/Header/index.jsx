@@ -47,7 +47,7 @@ function Header() {
                   <NavLink to="dispatch">Panier à préparer</NavLink>
                 </li>
                 <li>
-                  <a>Valider un Pick Up</a>
+                  <NavLink to="pickup">Valider une collecte</NavLink>
                 </li>
               </ul>
             </div>

@@ -40,7 +40,8 @@ export default function ProductsOfTheWeek({
       setLoading(true);
       try {
         const res = await axiosInstance.get("/currentCart");
-        if (res.data[0].status_id === 1) {
+        console.log(res.data[0].status_id);
+        if (res.data[0].status_id === 1 || res.data[0].status_id === 2) {
           navigate("/my-cart");
           setLoading(false);
         }
@@ -58,6 +59,7 @@ export default function ProductsOfTheWeek({
         productIds: cart,
       });
       setLoading(false)
+      setError(false);
       if (res.data.status_id === 1) {
         navigate("/my-cart");
         setLoading(true);

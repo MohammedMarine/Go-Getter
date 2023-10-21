@@ -7,8 +7,10 @@ import MyCart from "./components/MyCart";
 import ProductManagement from "./components/ProductManagement";
 import "./App.css";
 import AdminPage from "./components/AdminPage";
-import GetCarts from "./components/GetCarts";
-import CartDetails from "./components/GetCarts/CartDetails/CartDetails";
+import Dispatch from "./components/Dispatch";
+import CartDetails from "./components/Dispatch/CartDetails/CartDetails";
+import PickUp from "./components/PickUp";
+import CartToPickUp from "./components/PickUp/CartToPickUp";
 //import Header from "./components/Header";
 
 function App() {
@@ -78,7 +80,7 @@ function App() {
           <Route
             path="dispatch"
             element={
-              <GetCarts
+              <Dispatch
                 setSelectedCart={setSelectedCart}
                 setCartId={setCartId}
                 error={error}
@@ -91,6 +93,26 @@ function App() {
             <Route
               path=":id"
               element={<CartDetails products={selectedCart} cartId={cartId} />}
+            />
+          </Route>
+          <Route
+            path="pickup"
+            element={
+              <>
+                <PickUp
+                  setSelectedCart={setSelectedCart}
+                  setCartId={setCartId}
+                  error={error}
+                  setError={setError}
+                  message={message}
+                  setMessage={setMessage}
+                />
+              </>
+            }
+          >
+            <Route
+              path=":id"
+              element={<CartToPickUp products={selectedCart} cartId={cartId} />}
             />
           </Route>
         </Route>

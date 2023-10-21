@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Both props coming from the GetCarts component
-export default function CartDetails({ products, cartId }) {
-  const navigate = useNavigate();
+export default function CartDetails({ products, cartId}) {
+  let navigate = useNavigate();
 
   const [inputValue, setInputValue] = useState("");
 
@@ -21,6 +21,7 @@ export default function CartDetails({ products, cartId }) {
           statusId: 2,
         },
       });
+      console.log(res.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -35,6 +36,7 @@ export default function CartDetails({ products, cartId }) {
     await sendStatusOk();
     navigate("/admin/dispatch");
   };
+
 
   const sendStatusNotOk = async () => {
     try {
@@ -125,5 +127,5 @@ export default function CartDetails({ products, cartId }) {
 
 CartDetails.propTypes = {
   products: PropTypes.array,
-  cartId: PropTypes.number,
+  cartId: PropTypes.number
 };
