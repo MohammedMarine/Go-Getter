@@ -12,7 +12,7 @@ Go-Getter is a charity providing basic necessities to people in need. As the num
 ## My work on this project
 - Making sure the team is aligned with the client need.
 - Updating the client at each stage of the project to get validation
-- All the architecture of the front
+- Design and architecture of the front
 - Components: Register, Status, Message, Field, Header, MyCart, ProtectedRoute, Utils.
 - Supporting the team on their tasks (front and back)
 - Deployment
